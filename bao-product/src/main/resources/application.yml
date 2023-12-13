@@ -1,0 +1,42 @@
+
+server:
+  servlet:
+    context-path: /bao-product
+    session:
+      timeout: 30s
+  port: 9602
+
+
+spring:
+  datasource:
+    username: itbao
+    password: 7758-Qian
+    url: jdbc:mysql://112.124.22.142:3306/itbao?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 60000
+      idle-timeout: 30000
+      login-timeout: 5
+      validation-timeout: 3000
+      maximum-pool-size: 20
+      minimum-idle: 5
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: bao-product
+
+
+
+mybatis-plus:
+  configuration:
+    #开启驼峰命名，例如自动将列 user_name 映射到 userName 属性上。
+    map-underscore-to-camel-case: true
+    #禁用二级缓存
+    cache-enabled: false
+    #禁用一级缓存
+    local-cache-scope: statement
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  mapper-locations: classpath*:mapper/**/*Mapper.xml

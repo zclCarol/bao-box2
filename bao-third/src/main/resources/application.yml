@@ -1,0 +1,22 @@
+
+server:
+  servlet:
+    context-path: /bao-third
+    session:
+      timeout: 30s
+  port: 9603
+
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    alicloud:
+      access-key: LTAI5tHuoNJNGZEezQnWhBPP
+      secret-key: YoRUx9RFfo2iEkcRSUV0KnN2ZUTE7D
+      oss:
+        endpoint: oss-cn-shanghai.aliyuncs.com
+        bucket: bao-store
+  application:
+    name: bao-third
