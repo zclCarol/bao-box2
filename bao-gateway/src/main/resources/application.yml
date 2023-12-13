@@ -4,10 +4,12 @@ server:
     context-path: /
     session:
       timeout: 30s
-  port: 9602
+  port: 9966
 
 
 spring:
+#  main:
+#    web-application-type: reactive
   application:
     name: bao-gateway
   cloud:
@@ -17,12 +19,27 @@ spring:
     # 路由配置
     gateway:
       routes:
+#        - id: rrr
+#          uri: https://www.qq.com
+#          predicates:
+#            - Query=url,qq
+        - id: product_route
+          uri: lb://bao-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/bao-product/$\{segment}
+
         - id: user_route
-          uri: lb://auth
+          uri: lb://bao-auth
           predicates:
             - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/bao-auth/$\{segment}
 
-        - id: rrr
-          uri: https://www.qq.com
-          predicates:
-            - Query=url,qq
+
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

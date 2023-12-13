@@ -10,18 +10,19 @@
         <module name="bao-auth" />
         <module name="bao-gateway" />
         <module name="bao-common" />
+        <module name="bao-product" />
+        <module name="bao-third" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="bao-box (1)" target="17" />
-      <module name="bao-box (2)" target="1.5" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="bao-auth" options="-parameters" />
       <module name="bao-common" options="" />
       <module name="bao-gateway" options="-parameters" />
+      <module name="bao-product" options="-parameters" />
+      <module name="bao-third" options="-parameters" />
     </option>
   </component>
 </project>

@@ -20,11 +20,9 @@ public class UserController {
 
     /**
      * 登录
-     *
      */
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody UserLoginForm form) {
-        System.out.printf("123");
         R r = userService.login(form);
         return r;
     }

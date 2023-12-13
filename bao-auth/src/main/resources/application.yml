@@ -1,7 +1,7 @@
 
 server:
   servlet:
-    context-path: /
+    context-path: /bao-auth
     session:
       timeout: 30s
   port: 9601
@@ -9,10 +9,10 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: root
+    username: itbao
+    password: 7758-Qian
     url: jdbc:mysql://112.124.22.142:3306/itbao?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     hikari:
       connection-timeout: 30000
       max-lifetime: 60000
@@ -21,16 +21,16 @@ spring:
       validation-timeout: 3000
       maximum-pool-size: 20
       minimum-idle: 5
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
   application:
     name: bao-auth
 
 
 
-mybatis:
+mybatis-plus:
   configuration:
     #开启驼峰命名，例如自动将列 user_name 映射到 userName 属性上。
     map-underscore-to-camel-case: true
