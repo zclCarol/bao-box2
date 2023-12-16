@@ -17,6 +17,7 @@
         <module>bao-gateway</module>
         <module>bao-third</module>
         <module>bao-product</module>
+        <module>bao-order</module>
     </modules>
 
 

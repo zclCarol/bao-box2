@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/bao-auth/pom.xml" />
         <option value="$PROJECT_DIR$/bao-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/bao-product/pom.xml" />
+        <option value="$PROJECT_DIR$/bao-order/pom.xml" />
       </list>
     </option>
   </component>

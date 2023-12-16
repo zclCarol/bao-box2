@@ -30,6 +30,13 @@ spring:
           filters:
             - RewritePath=/api/(?<segment>.*),/bao-product/$\{segment}
 
+        - id: order_route
+          uri: lb://bao-order
+          predicates:
+            - Path=/api/order/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/bao-order/$\{segment}
+
         - id: user_route
           uri: lb://bao-auth
           predicates:

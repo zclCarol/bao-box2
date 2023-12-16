@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bao-order" />
         <module name="bao-auth" />
         <module name="bao-gateway" />
         <module name="bao-common" />
@@ -21,6 +22,7 @@
       <module name="bao-auth" options="-parameters" />
       <module name="bao-common" options="" />
       <module name="bao-gateway" options="-parameters" />
+      <module name="bao-order" options="-parameters" />
       <module name="bao-product" options="-parameters" />
       <module name="bao-third" options="-parameters" />
     </option>

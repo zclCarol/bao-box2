@@ -4,6 +4,7 @@ import com.bao.box.product.dao.ProductMapper;
 import com.bao.box.common.utils.R;
 import com.bao.box.product.model.Category;
 import com.bao.box.product.model.Product;
+import com.bao.box.product.model.ShoppingCart;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,5 +59,51 @@ public class ProductService {
 
         return r;
     }
+
+    /**
+     * 加入购物车
+     */
+    public R addShoppingCart(ShoppingCart shoppingCart){
+        //判断购物车是否已有
+        Integer hasShoppingCart = productMapper.hasShoppingCart(shoppingCart.getNo(),shoppingCart.getProductId());
+        if(hasShoppingCart != null){
+            productMapper.updateCartNum(hasShoppingCart);
+        }else {
+            productMapper.addShoppingCart(shoppingCart);
+        }
+        ShoppingCart newCart = productMapper.getShoppingCart(shoppingCart.getNo(),shoppingCart.getProductId());
+        ShoppingCart temp =productMapper.listOneCart(shoppingCart.getNo(),newCart.getId());
+        R r = R.ok().put("data", temp);
+        return r;
+    }
+
+    /**
+     * 查询用户购物车当前总数
+     */
+    public R listCart(Integer userNo){
+        List<ShoppingCart> list = productMapper.listCart(userNo);
+        R r = R.ok().put("list", list);
+        return r;
+    }
+
+    /**
+     * 删除购物车
+     */
+    public R delShoppingCart(Integer cartId,Integer productId){
+        productMapper.delShoppingCart(cartId,productId);
+        R r = R.ok();
+        return r;
+    }
+
+    /**
+     * 批量删除购物车
+     */
+    public R delShoppingCarts(Integer[] cartIds){
+        int delRows = productMapper.delShoppingCarts(cartIds);
+        R r = R.ok().put("delRows",delRows);
+        return r;
+    }
+
+
 
 }
